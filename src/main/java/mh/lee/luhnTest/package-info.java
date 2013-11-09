@@ -1,8 +1,8 @@
 /**
- * 
+ *
  */
 /**
  * @author ¹ÎÇõ
  *
  */
-package luhnTest;
+package mh.lee.luhnTest;
