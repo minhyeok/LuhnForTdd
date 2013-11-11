@@ -4,15 +4,11 @@ package mh.lee.luhnTest;
  * @author 민혁
  * @version 0.01
  * */
-public class CardValidator {
-/**
+public class CardValidator implements Validator {
+    /**
 	 * 입력받을 수의 변수공간이다.
 	 * */
 	private int iOperand;
-	/**
-	 * 해당 수의 글자 길이를 저장할 변수공간이다.
-	 * */
-	private int iLength;
 	/**
 	 * 추후 유효성 여부를 판단하고자 사용한다.
 	 * */
@@ -21,10 +17,9 @@ public class CardValidator {
 	public static final int JUDGE_TEN = 10;
 	/**
 	 * @param sOperand : get String to judge validity.
-	 * TODO : 예외처리가 필요하다
+	 * TODO : 잘못된 글자 예외처리가 필요하다.
 	 * */
 	public final void setOperand(final String sOperand) {
-		iLength = sOperand.length();
 		iOperand = Integer.valueOf(sOperand);
 	}
 	/**
@@ -49,6 +44,7 @@ public class CardValidator {
 		    /** 짝수 일때만 수행한다. */
 			iScore = getEvenScore(iScore);
 		}
+		/**다음 자릿수 탐색한다.*/
 		iOperand /= JUDGE_TEN;
 		if (iOperand != 0) {
 			return iScore + judgeValidityRecursive(!isOdd);
@@ -63,7 +59,7 @@ public class CardValidator {
 	 * */
 	private int getEvenScore(int iScore) {
 		iScore *= 2;
-		return (iScore / JUDGE_TEN) + (iScore % JUDGE_TEN);
+		return iScore / JUDGE_TEN + iScore % JUDGE_TEN;
 	}
 	/**
 	 * 유효한지 여부를 판별하는 메서드.

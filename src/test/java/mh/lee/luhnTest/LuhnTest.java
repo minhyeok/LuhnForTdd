@@ -27,15 +27,28 @@ public class LuhnTest {
 	}
 	
 	@Test
+	public void invalidLongTest(){
+	    validator.setOperand("38281732");
+	    validator.judgeValidity();
+	    assertTrue(validator.isValid());
+	}
+	
+	@Test
 	public void singleCharacterTest(){
 		validator.setOperand("0");
 		validator.judgeValidity();
 		assertTrue(validator.isValid());
-		
 	}
 	
 	@Test
-	public void exceptionTerminationTest(){
+	public void invalidSingleCharacterTest(){
+	    validator.setOperand("4");
+	    validator.judgeValidity();
+	    assertTrue(validator.isValid());
+	}
+	
+	@Test
+	public void wrongCharacterTest(){
 		validator.setOperand("---");
 		validator.judgeValidity();
 	}
