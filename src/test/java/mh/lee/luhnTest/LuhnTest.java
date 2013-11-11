@@ -33,5 +33,11 @@ public class LuhnTest {
 		assertTrue(validator.isValid());
 		
 	}
+	
+	@Test
+	public void exceptionTerminationTest(){
+		validator.setOperand("---");
+		validator.judgeValidity();
+	}
 
 }

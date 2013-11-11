@@ -27,6 +27,16 @@
   		</plugin>
   	</plugins>
   </build>
+  <reporting>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>emma-maven-plugin</artifactId>
+              <inherited>true</inherited>
+          </plugin>
+      </plugins>
+  </reporting>
+  
   <dependencies>
   	<dependency>
   		<groupId>junit</groupId>
