@@ -58,5 +58,11 @@ public class LuhnTest {
         validator.setOperand("123456789");
         assertEquals(9, validator.charToInteger(8));
     }
+    
+    @Test
+    public void getOpTest(){
+        validator.setOperand("29132");
+        assertTrue("29132".contentEquals(validator.getOperand()));
+    }
 
 }
