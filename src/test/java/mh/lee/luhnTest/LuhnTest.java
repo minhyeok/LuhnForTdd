@@ -6,14 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class LuhnTest {
-	
 	CardValidator validator;
 	@Before
 	public void setUp() throws Exception{
 		validator = new CardValidator();
 	}
 	@Test
-	public void firstTest(){
+	public void firstTest() {
 		validator.setOperand("446667651");
 		validator.judgeValidity();
 		assertTrue(validator.isValid());
@@ -30,7 +29,7 @@ public class LuhnTest {
 	public void invalidLongTest(){
 	    validator.setOperand("38281732");
 	    validator.judgeValidity();
-	    assertTrue(validator.isValid());
+	    assertFalse(validator.isValid());
 	}
 	
 	@Test
@@ -44,13 +43,20 @@ public class LuhnTest {
 	public void invalidSingleCharacterTest(){
 	    validator.setOperand("4");
 	    validator.judgeValidity();
-	    assertTrue(validator.isValid());
+	    assertFalse(validator.isValid());
 	}
 	
-	@Test
-	public void wrongCharacterTest(){
-		validator.setOperand("---");
-		validator.judgeValidity();
-	}
+    @Test
+    public void wrongCharacterTest() {
+        validator.setOperand("---");
+        validator.judgeValidity();
+        assertFalse(validator.isValid());
+    }
+    
+    @Test
+    public void charToIntegerTest(){
+        validator.setOperand("123456789");
+        assertEquals(9, validator.charToInteger(8));
+    }
 
 }

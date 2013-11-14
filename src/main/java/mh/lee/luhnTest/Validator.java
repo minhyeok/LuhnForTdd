@@ -11,6 +11,11 @@ public interface Validator {
      * */
     void setOperand(String sOperand);
     /**
+     * Operand를 반환한다.
+     * @return return Operand.
+     * */
+    String getOperand();
+    /**
      * 받아들인 식별자가 유효한지 판정한다.
      * */
     void judgeValidity();
