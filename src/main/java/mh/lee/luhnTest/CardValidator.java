@@ -10,18 +10,31 @@ public class CardValidator implements Validator {
 	 * */
 	private String sOperand;
 	/**
+	 * 결과와 확인할 식별자이다.
+	 * */
+	private int iValidator;
+	/**
 	 * 추후 유효성 여부를 판단하고자 사용한다.
 	 * */
 	private boolean isValid = false;
 	/**나누어질 수 10을 명시함.*/
 	public static final int DIGIT_TEN = 10;
 	/**
-	 * Operand를 정한다.
-	 * @param operand get String to judge validity.
-	 * */
+     * Operand를 정한다.
+     * @param operand get String to judge validity.
+     * @param validator 후에 일치 여부를 확인할 인자.
+     * */
+    public final void setOperand(final String operand, final int validator) {
+        this.setOperand(operand);
+        iValidator = validator;
+	}
+    /**
+     * Operand를 정한다.
+     * @param operand get String to judge validity.
+     * */
     public final void setOperand(final String operand) {
         this.sOperand = operand;
-	}
+    }
     /**
      * Operand를 반환한다.
      * @return return Operand.
@@ -35,7 +48,7 @@ public class CardValidator implements Validator {
 	public final void judgeValidity() {
 		int score;
 		score = judgeValidityIterative();
-		if (score % DIGIT_TEN == 0) {
+		if (score % DIGIT_TEN == iValidator) {
 			isValid = true;
 		}
 	}

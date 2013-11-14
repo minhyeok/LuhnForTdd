@@ -13,55 +13,55 @@ public class LuhnTest {
 	}
 	@Test
 	public void firstTest() {
-		validator.setOperand("446667651");
+		validator.setOperand("446667651", 0);
 		validator.judgeValidity();
 		assertTrue(validator.isValid());
 	}
 	
 	@Test
 	public void zeroTest(){
-		validator.setOperand("0000000000");
+		validator.setOperand("0000000000", 0);
 		validator.judgeValidity();
 		assertTrue(validator.isValid());
 	}
 	
 	@Test
 	public void invalidLongTest(){
-	    validator.setOperand("38281732");
+	    validator.setOperand("38281732", 4);
 	    validator.judgeValidity();
 	    assertFalse(validator.isValid());
 	}
 	
 	@Test
 	public void singleCharacterTest(){
-		validator.setOperand("0");
+		validator.setOperand("0", 0);
 		validator.judgeValidity();
 		assertTrue(validator.isValid());
 	}
 	
 	@Test
 	public void invalidSingleCharacterTest(){
-	    validator.setOperand("4");
+	    validator.setOperand("4", 0);
 	    validator.judgeValidity();
 	    assertFalse(validator.isValid());
 	}
 	
     @Test
     public void wrongCharacterTest() {
-        validator.setOperand("---");
+        validator.setOperand("---", 0);
         validator.judgeValidity();
         assertFalse(validator.isValid());
     }
     
     @Test
     public void charToIntegerTest(){
-        validator.setOperand("123456789");
+        validator.setOperand("123456789", 0);
         assertEquals(9, validator.charToInteger(8));
     }
     
     @Test
     public void getOpTest(){
-        validator.setOperand("29132");
+        validator.setOperand("29132", 3);
         assertTrue("29132".contentEquals(validator.getOperand()));
     }
 
